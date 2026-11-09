@@ -1,0 +1,33 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/WBcontrol {E:/HK6/DOAN/verilog/WBcontrol/WBcontrol.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/RegisterFile {E:/HK6/DOAN/verilog/RegisterFile/Register_File.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/PC {E:/HK6/DOAN/verilog/PC/PC.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/MEMWB {E:/HK6/DOAN/verilog/MEMWB/MEMWB.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/MEMcontrol {E:/HK6/DOAN/verilog/MEMcontrol/MEMcontrol.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/ImmGen {E:/HK6/DOAN/verilog/ImmGen/ImmGen.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/IFID {E:/HK6/DOAN/verilog/IFID/IFID.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/IDEX {E:/HK6/DOAN/verilog/IDEX/IDEX.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/Hazard_Detection_Unit {E:/HK6/DOAN/verilog/Hazard_Detection_Unit/Hazard_Detection_Unit.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/Fowarding_Unit {E:/HK6/DOAN/verilog/Fowarding_Unit/Fowarding_Unit.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/EXMEM {E:/HK6/DOAN/verilog/EXMEM/EXMEM.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/EXcontrol {E:/HK6/DOAN/verilog/EXcontrol/EXcontrol.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/BranchComp {E:/HK6/DOAN/verilog/BranchComp/BranchComp.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/ALU {E:/HK6/DOAN/verilog/ALU/ALU.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/RISC_V {E:/HK6/DOAN/verilog/RISC_V/RISC_V.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/IMEM {E:/HK6/DOAN/verilog/IMEM/IMEM.v}
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/DMEM {E:/HK6/DOAN/verilog/DMEM/DMEM.v}
+
+vlog -vlog01compat -work work +incdir+E:/HK6/DOAN/verilog/RISC_V {E:/HK6/DOAN/verilog/RISC_V/IMEM_tb.v}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs="+acc"  IMEM_tb
+
+add wave *
+view structure
+view signals
+run -all

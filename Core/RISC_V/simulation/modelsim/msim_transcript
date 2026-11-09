@@ -1,0 +1,410 @@
+# Reading E:/HK3/Quartus-web-13.0.1.232-windows/modelsim_ase/tcl/vsim/pref.tcl 
+# ERROR: No extended dataflow license exists
+# do RISC_V_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying E:\HK3\Quartus-web-13.0.1.232-windows\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied E:\HK3\Quartus-web-13.0.1.232-windows\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/WBcontrol {E:/HK6/HDL/doan/verilog/verilog/WBcontrol/WBcontrol.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module WBcontrol
+# 
+# Top level modules:
+# 	WBcontrol
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RegisterFile {E:/HK6/HDL/doan/verilog/verilog/RegisterFile/Register_File.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Register_File
+# 
+# Top level modules:
+# 	Register_File
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/PC {E:/HK6/HDL/doan/verilog/verilog/PC/PC.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module PC
+# 
+# Top level modules:
+# 	PC
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/MEMWB {E:/HK6/HDL/doan/verilog/verilog/MEMWB/MEMWB.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MEMWB
+# 
+# Top level modules:
+# 	MEMWB
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/MEMcontrol {E:/HK6/HDL/doan/verilog/verilog/MEMcontrol/MEMcontrol.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MEMcontrol
+# 
+# Top level modules:
+# 	MEMcontrol
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/ImmGen {E:/HK6/HDL/doan/verilog/verilog/ImmGen/ImmGen.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ImmGen
+# 
+# Top level modules:
+# 	ImmGen
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/IFID {E:/HK6/HDL/doan/verilog/verilog/IFID/IFID.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module IFID
+# 
+# Top level modules:
+# 	IFID
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/IDEX {E:/HK6/HDL/doan/verilog/verilog/IDEX/IDEX.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module IDEX
+# 
+# Top level modules:
+# 	IDEX
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit {E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit/Hazard_Detection_Unit.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Hazard_Detection_Unit
+# 
+# Top level modules:
+# 	Hazard_Detection_Unit
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit {E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit/Fowarding_Unit.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Fowarding_Unit
+# 
+# Top level modules:
+# 	Fowarding_Unit
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/EXMEM {E:/HK6/HDL/doan/verilog/verilog/EXMEM/EXMEM.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module EXMEM
+# 
+# Top level modules:
+# 	EXMEM
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/EXcontrol {E:/HK6/HDL/doan/verilog/verilog/EXcontrol/EXcontrol.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module EXcontrol
+# 
+# Top level modules:
+# 	EXcontrol
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/BranchComp {E:/HK6/HDL/doan/verilog/verilog/BranchComp/BranchComp.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module BranchComp
+# 
+# Top level modules:
+# 	BranchComp
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/ALU {E:/HK6/HDL/doan/verilog/verilog/ALU/ALU.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V {E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module RISC_V
+# 
+# Top level modules:
+# 	RISC_V
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V {E:/HK6/HDL/doan/verilog/verilog/RISC_V/HexDigit.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module HexDigit
+# 
+# Top level modules:
+# 	HexDigit
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/IMEM {E:/HK6/HDL/doan/verilog/verilog/IMEM/IMEM.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module IMEM
+# 
+# Top level modules:
+# 	IMEM
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/DMEM {E:/HK6/HDL/doan/verilog/verilog/DMEM/DMEM.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module DMEM
+# 
+# Top level modules:
+# 	DMEM
+# 
+# vlog -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V {E:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module pipeline_tb
+# 
+# Top level modules:
+# 	pipeline_tb
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs="+acc"  pipeline_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps pipeline_tb 
+# Loading work.pipeline_tb
+# Loading work.RISC_V
+# Loading work.PC
+# Loading work.IMEM
+# Loading work.IFID
+# Loading work.Register_File
+# Loading work.Hazard_Detection_Unit
+# Loading work.IDEX
+# Loading work.ImmGen
+# Loading work.ALU
+# Loading work.BranchComp
+# Loading work.EXcontrol
+# Loading work.Fowarding_Unit
+# Loading work.EXMEM
+# Loading work.DMEM
+# Loading work.MEMcontrol
+# Loading work.MEMWB
+# Loading work.WBcontrol
+# Loading work.HexDigit
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Time:     0.0 ns | PC: 00400000 | Inst: 100100b7
+# Time:    50.0 ns | PC: 00400004 | Inst: 00000117
+# Time:    70.0 ns | PC: 00400008 | Inst: 00a00193
+# Time:    90.0 ns | PC: 0040000c | Inst: 0141a213
+# Time:   110.0 ns | PC: 00400010 | Inst: 0051b293
+# Time:   130.0 ns | PC: 00400014 | Inst: 1231c313
+# Time:   150.0 ns | PC: 00400018 | Inst: 00136393
+# Time:   170.0 ns | PC: 0040001c | Inst: 3ff07413
+# Time:   190.0 ns | PC: 00400020 | Inst: 0ff3f493
+# Time:   210.0 ns | PC: 00400024 | Inst: 00219513
+# Time:   230.0 ns | PC: 00400028 | Inst: 00155593
+# Time:   250.0 ns | PC: 0040002c | Inst: 4015d613
+# Time:   270.0 ns | PC: 00400030 | Inst: 00c586b3
+# Time:   290.0 ns | PC: 00400034 | Inst: 40b68733
+# Time:   310.0 ns | PC: 00400038 | Inst: 004717b3
+# Time:   330.0 ns | PC: 0040003c | Inst: 00d7a833
+# Time:   350.0 ns | PC: 00400040 | Inst: 00f6b8b3
+# Time:   370.0 ns | PC: 00400044 | Inst: 00e7c933
+# Time:   390.0 ns | PC: 00400048 | Inst: 0047d9b3
+# Time:   410.0 ns | PC: 0040004c | Inst: 4049da33
+# Time:   430.0 ns | PC: 00400050 | Inst: 010a6ab3
+# Time:   450.0 ns | PC: 00400054 | Inst: 012afb33
+# Time:   470.0 ns | PC: 00400058 | Inst: 0000ab83
+# Time:   490.0 ns | PC: 0040005c | Inst: 001b8c13
+# Time:   510.0 ns | PC: 00400060 | Inst: 01008c83
+# Time:   550.0 ns | PC: 00400064 | Inst: 0110cd03
+# Time:   570.0 ns | PC: 00400068 | Inst: 01409d83
+# Time:   590.0 ns | PC: 0040006c | Inst: 0160de03
+# Time:   610.0 ns | PC: 00400070 | Inst: 00f00e93
+# Time:   630.0 ns | PC: 00400074 | Inst: 00f00f13
+# Time:   650.0 ns | PC: 00400078 | Inst: 01ee8463
+# Time:   670.0 ns | PC: 0040007c | Inst: 00100f93
+# Time:   690.0 ns | PC: 00400080 | Inst: 000e9463
+# Time:   730.0 ns | PC: 00400084 | Inst: 00100f93
+# Time:   750.0 ns | PC: 00400088 | Inst: ffb00f93
+# Time:   790.0 ns | PC: 0040008c | Inst: 01dfc463
+# Time:   810.0 ns | PC: 00400090 | Inst: 00100f93
+# Time:   830.0 ns | PC: 00400094 | Inst: 01fed463
+# Time:   870.0 ns | PC: 00400098 | Inst: 00100f93
+# Time:   890.0 ns | PC: 0040009c | Inst: 01fee463
+# Time:   930.0 ns | PC: 004000a0 | Inst: 00100f93
+# Time:   950.0 ns | PC: 004000a4 | Inst: 01dff463
+# Time:   990.0 ns | PC: 004000a8 | Inst: 00100f93
+# Time:  1010.0 ns | PC: 004000ac | Inst: 02c00fef
+# Time:  1050.0 ns | PC: 004000b0 | Inst: 00100f93
+# Time:  1070.0 ns | PC: 004000b4 | Inst: 0380a023
+# Time:  1090.0 ns | PC: 004000d8 | Inst: 00000013
+# Time:  1110.0 ns | PC: 004000dc | Inst: fd9ff06f
+# Time:  1130.0 ns | PC: 004000e0 | Inst: 10010337
+# Time:  1150.0 ns | PC: 004000e4 | Inst: 02030313
+# Time:  1170.0 ns | PC: 004000b4 | Inst: 0380a023
+# Time:  1190.0 ns | PC: 004000b8 | Inst: 03b09223
+# Time:  1210.0 ns | PC: 004000bc | Inst: 03908323
+# Time:  1230.0 ns | PC: 004000c0 | Inst: 004002b7
+# Time:  1250.0 ns | PC: 004000c4 | Inst: 12028293
+# Time:  1270.0 ns | PC: 004000c8 | Inst: 00000297
+# Time:  1290.0 ns | PC: 004000cc | Inst: 01828293
+# Time:  1310.0 ns | PC: 004000d0 | Inst: 00028067
+# Time:  1330.0 ns | PC: 004000d4 | Inst: 00100f93
+# Time:  1350.0 ns | PC: 004000d8 | Inst: 00000013
+# Time:  1370.0 ns | PC: 004000e0 | Inst: 10010337
+# Time:  1390.0 ns | PC: 004000e4 | Inst: 02030313
+# Time:  1410.0 ns | PC: 004000e8 | Inst: 00132023
+# Time:  1430.0 ns | PC: 004000ec | Inst: 00232223
+# Time:  1450.0 ns | PC: 004000f0 | Inst: 00332423
+# Time:  1470.0 ns | PC: 004000f4 | Inst: 00432623
+# Time:  1490.0 ns | PC: 004000f8 | Inst: 00532823
+# Time:  1510.0 ns | PC: 004000fc | Inst: 00632a23
+# Time:  1530.0 ns | PC: 00400100 | Inst: 00732c23
+# Time:  1550.0 ns | PC: 00400104 | Inst: 00832e23
+# Time:  1570.0 ns | PC: 00400108 | Inst: 02932023
+# Time:  1590.0 ns | PC: 0040010c | Inst: 02a32223
+# Time:  1610.0 ns | PC: 00400110 | Inst: 02b32423
+# Time:  1630.0 ns | PC: 00400114 | Inst: 02c32623
+# Time:  1650.0 ns | PC: 00400118 | Inst: 02d32823
+# Time:  1670.0 ns | PC: 0040011c | Inst: 02e32a23
+# Time:  1690.0 ns | PC: 00400120 | Inst: 02f32c23
+# Time:  1710.0 ns | PC: 00400124 | Inst: 03032e23
+# Time:  1730.0 ns | PC: 00400128 | Inst: 05132023
+# Time:  1750.0 ns | PC: 0040012c | Inst: 05232223
+# Time:  1770.0 ns | PC: 00400130 | Inst: 05332423
+# Time:  1790.0 ns | PC: 00400134 | Inst: 05432623
+# Time:  1810.0 ns | PC: 00400138 | Inst: 05532823
+# Time:  1830.0 ns | PC: 0040013c | Inst: 05632a23
+# Time:  1850.0 ns | PC: 00400140 | Inst: 05732c23
+# Time:  1870.0 ns | PC: 00400144 | Inst: 05832e23
+# Time:  1890.0 ns | PC: 00400148 | Inst: 07932023
+# Time:  1910.0 ns | PC: 0040014c | Inst: 07a32223
+# Time:  1930.0 ns | PC: 00400150 | Inst: 07b32423
+# Time:  1950.0 ns | PC: 00400154 | Inst: 07c32623
+# Time:  1970.0 ns | PC: 00400158 | Inst: 07d32823
+# Time:  1990.0 ns | PC: 0040015c | Inst: 07e32a23
+# Time:  2010.0 ns | PC: 00400160 | Inst: 07f32c23
+# Time:  2030.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2050.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2070.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2090.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2110.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2130.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2150.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2170.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2190.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2210.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2230.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2250.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2270.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2290.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2310.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2330.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2350.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2370.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2390.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2410.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2430.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2450.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2470.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2490.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2510.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2530.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2550.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2570.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2590.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2610.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2630.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2650.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2670.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2690.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2710.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2730.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2750.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2770.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2790.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2810.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2830.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2850.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2870.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2890.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2910.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2930.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  2950.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  2970.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  2990.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3010.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3030.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3050.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3070.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3090.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3110.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3130.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3150.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3170.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3190.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3210.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3230.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3250.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3270.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3290.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3310.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3330.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3350.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3370.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3390.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3410.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3430.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3450.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3470.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3490.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3510.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3530.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3550.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3570.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3590.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3610.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3630.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3650.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3670.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3690.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3710.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3730.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3750.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3770.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3790.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3810.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3830.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3850.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3870.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3890.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3910.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3930.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  3950.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  3970.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  3990.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4010.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4030.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4050.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4070.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4090.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4110.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4130.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4150.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4170.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4190.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4210.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4230.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4250.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4270.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4290.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4310.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4330.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4350.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4370.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4390.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4410.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4430.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4450.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4470.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4490.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4510.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4530.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4550.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4570.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4590.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4610.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4630.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4650.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4670.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4690.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4710.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4730.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4750.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4770.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4790.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4810.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4830.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4850.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4870.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4890.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4910.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4930.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  4950.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  4970.0 ns | PC: 00400164 | Inst: 0000006f
+# Time:  4990.0 ns | PC: 00400168 | Inst: xxxxxxxx
+# Time:  5010.0 ns | PC: 0040016c | Inst: xxxxxxxx
+# Time:  5030.0 ns | PC: 00400164 | Inst: 0000006f
+# ================ KET QUA KIEM TRA CUOI CUNG ================
+# Register x10 (val):         40
+# Register x11 (val):         20
+# ============================================================
+# 
+# Break in Module pipeline_tb at E:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v line 49
+# Simulation Breakpoint: Break in Module pipeline_tb at E:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v line 49
+# MACRO ./RISC_V_run_msim_rtl_verilog.do PAUSED at line 34
+# WARNING: No extended dataflow license exists

@@ -1,0 +1,77 @@
+module DMEM (
+    input         clk,
+    input  [31:0] addr,
+    input  [31:0] wdata,
+    input         MemRW,
+    input  [2:0]  funct3,
+    output [31:0] rdata,
+	 input  [7:0] addr_output,
+	 output [31:0] output_dmem
+);
+
+    parameter BASE_ADDRESS = 32'h10010000;
+    parameter RAM_SIZE     = 1024; 
+    
+    reg [31:0] ram [0:RAM_SIZE-1];
+	 
+    initial begin
+        $readmemh("D:/ChuyendeViMach_1/RTL/23520049_Bao _cao_do_an_CE213/verilog/TESTRARS/test_1_data.txt", ram);
+    end	 
+
+    // Tính toán địa chỉ
+    wire [31:0] relative_addr = addr - BASE_ADDRESS;
+    wire [11:0] word_addr     = relative_addr[9:2];
+    wire [1:0]  byte_offset   = relative_addr[1:0];
+    wire  addr_valid = (addr >= BASE_ADDRESS) && (relative_addr < (RAM_SIZE * 4));
+
+    // --- PHẦN GHI (Store): Đồng bộ theo CLK ---
+    always @(posedge clk) begin
+        if (MemRW && addr_valid) begin
+            case (funct3)
+                3'b000: // sb (Store Byte)
+                    case (byte_offset)
+                        2'b00: ram[word_addr][7:0]   <= wdata[7:0];
+                        2'b01: ram[word_addr][15:8]  <= wdata[7:0];
+                        2'b10: ram[word_addr][23:16] <= wdata[7:0];
+                        2'b11: ram[word_addr][31:24] <= wdata[7:0];
+                    endcase
+                
+                3'b001: // sh (Store Halfword)
+                    if (byte_offset[1] == 1'b0)
+                        ram[word_addr][15:0]  <= wdata[15:0];
+                    else
+                        ram[word_addr][31:16] <= wdata[15:0];
+                
+                3'b010: // sw (Store Word)
+                    ram[word_addr] <= wdata;
+                
+                default: ;
+            endcase
+        end
+    end
+
+    // --- PHẦN ĐỌC (Load): Bất đồng bộ (Combinational) ---
+	 
+	wire [31:0] temp_word = addr_valid ? ram[word_addr] : 32'b0;
+
+    // Trích xuất Byte và Halfword dựa trên offset
+    wire [7:0]  selected_byte = (byte_offset == 2'b00) ? temp_word[7:0]  :
+                                (byte_offset == 2'b01) ? temp_word[15:8] :
+                                (byte_offset == 2'b10) ? temp_word[23:16] :
+                                                         temp_word[31:24];
+
+    wire [15:0] selected_half = (byte_offset[1] == 1'b0) ? temp_word[15:0] :
+                                                           temp_word[31:16];
+
+    assign rdata = (!addr_valid)       ? 32'b0 :
+                   (funct3 == 3'b000)  ? {{24{selected_byte[7]}}, selected_byte} : // lb
+                   (funct3 == 3'b001)  ? {{16{selected_half[15]}}, selected_half} : // lh
+                   (funct3 == 3'b010)  ? temp_word :                               // lw
+                   (funct3 == 3'b100)  ? {24'b0, selected_byte} :                  // lbu
+                   (funct3 == 3'b101)  ? {16'b0, selected_half} :                  // lhu
+                                         32'b0;
+	 
+	 assign output_dmem = ram[addr_output];
+
+
+endmodule

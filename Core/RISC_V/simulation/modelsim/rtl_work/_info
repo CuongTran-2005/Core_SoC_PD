@@ -1,0 +1,403 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\HK6\HDL\doan\verilog\verilog\RISC_V\simulation\modelsim
+vALU
+IlI;F1D[F:HjNF[j?<[GjG0
+V@17zL7g5f`Yd[Z2;de^bS0
+Z1 dE:\HK6\HDL\doan\verilog\verilog\RISC_V\simulation\modelsim
+w1776161962
+8E:/HK6/HDL/doan/verilog/verilog/ALU/ALU.v
+FE:/HK6/HDL/doan/verilog/verilog/ALU/ALU.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+n@a@l@u
+!i10b 1
+!s100 9LbdZehU2BY_j[Mom8Rzl3
+!s85 0
+!s108 1779445940.209000
+!s107 E:/HK6/HDL/doan/verilog/verilog/ALU/ALU.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/ALU|E:/HK6/HDL/doan/verilog/verilog/ALU/ALU.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/ALU -O0
+vBranchComp
+I::EfKCIN=IJTbk7bT3Pi^1
+VN>_kT>jmH@`[jPJ3??IOz0
+R1
+w1775119540
+8E:/HK6/HDL/doan/verilog/verilog/BranchComp/BranchComp.v
+FE:/HK6/HDL/doan/verilog/verilog/BranchComp/BranchComp.v
+L0 1
+R2
+r1
+31
+R3
+n@branch@comp
+!i10b 1
+!s100 SWeNRh6_]G2RcKBb979TN2
+!s85 0
+!s108 1779445940.175000
+!s107 E:/HK6/HDL/doan/verilog/verilog/BranchComp/BranchComp.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/BranchComp|E:/HK6/HDL/doan/verilog/verilog/BranchComp/BranchComp.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/BranchComp -O0
+vDMEM
+InU]1bfHAhnNSVan>km=0c1
+VeD9PUh5Rl0WUA`8Vl`m<;1
+R1
+w1779428432
+8E:/HK6/HDL/doan/verilog/verilog/DMEM/DMEM.v
+FE:/HK6/HDL/doan/verilog/verilog/DMEM/DMEM.v
+L0 1
+R2
+r1
+31
+R3
+n@d@m@e@m
+!i10b 1
+!s100 3n@4C7L[T:TdSBkZoa?z:2
+!s85 0
+!s108 1779445940.349000
+!s107 E:/HK6/HDL/doan/verilog/verilog/DMEM/DMEM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/DMEM|E:/HK6/HDL/doan/verilog/verilog/DMEM/DMEM.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/DMEM -O0
+vEXcontrol
+Ib6VDUL7PencFkeZfe[E_L0
+VS28oNn@oJ<?4nLPPYh@_^1
+R1
+w1776340560
+8E:/HK6/HDL/doan/verilog/verilog/EXcontrol/EXcontrol.v
+FE:/HK6/HDL/doan/verilog/verilog/EXcontrol/EXcontrol.v
+L0 1
+R2
+r1
+31
+R3
+n@e@xcontrol
+!i10b 1
+!s100 WQ9SM8GD3??2A;`UH_=LX3
+!s85 0
+!s108 1779445940.139000
+!s107 E:/HK6/HDL/doan/verilog/verilog/EXcontrol/EXcontrol.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/EXcontrol|E:/HK6/HDL/doan/verilog/verilog/EXcontrol/EXcontrol.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/EXcontrol -O0
+vEXMEM
+I8T_DOS1i6L`36<DKklmI92
+Vgbnz`jFe9dZmaXIlXZD[:0
+R1
+w1776283530
+8E:/HK6/HDL/doan/verilog/verilog/EXMEM/EXMEM.v
+FE:/HK6/HDL/doan/verilog/verilog/EXMEM/EXMEM.v
+L0 1
+R2
+r1
+31
+R3
+n@e@x@m@e@m
+!i10b 1
+!s100 Zo18iX:5M?a1T?zz1geYg2
+!s85 0
+!s108 1779445940.104000
+!s107 E:/HK6/HDL/doan/verilog/verilog/EXMEM/EXMEM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/EXMEM|E:/HK6/HDL/doan/verilog/verilog/EXMEM/EXMEM.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/EXMEM -O0
+vFowarding_Unit
+Ilj`:F]=1YejXQSUWnOcd=1
+VN6d3CO5CAPL_1i7@B;H3Z3
+R1
+w1779398616
+8E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit/Fowarding_Unit.v
+FE:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit/Fowarding_Unit.v
+L0 1
+R2
+r1
+31
+R3
+n@fowarding_@unit
+!i10b 1
+!s100 4EgV?<7D@H^YORLW`]2[:1
+!s85 0
+!s108 1779445940.072000
+!s107 E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit/Fowarding_Unit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit|E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit/Fowarding_Unit.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/Fowarding_Unit -O0
+vHazard_Detection_Unit
+ILFQ7eCE?X;7EAnUSWb3eo0
+V4FR?FSD@QjT69]XI>PAe`3
+R1
+w1779395333
+8E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit/Hazard_Detection_Unit.v
+FE:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit/Hazard_Detection_Unit.v
+L0 1
+R2
+r1
+31
+R3
+n@hazard_@detection_@unit
+!i10b 1
+!s100 3Q374KUS>bE0H62SXKjFC2
+!s85 0
+!s108 1779445940.029000
+!s107 E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit/Hazard_Detection_Unit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit|E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit/Hazard_Detection_Unit.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/Hazard_Detection_Unit -O0
+vHexDigit
+ICZfDf]C[;[fiQ=n<aH@B?0
+VJe8S8f6`CJ5>beV:Y031;1
+R1
+w1779302788
+8E:/HK6/HDL/doan/verilog/verilog/RISC_V/HexDigit.v
+FE:/HK6/HDL/doan/verilog/verilog/RISC_V/HexDigit.v
+L0 1
+R2
+r1
+31
+R3
+Z4 !s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V -O0
+n@hex@digit
+!i10b 1
+!s100 Wi3oW_<AfjoU=2TGXYL]62
+!s85 0
+!s108 1779445940.281000
+!s107 E:/HK6/HDL/doan/verilog/verilog/RISC_V/HexDigit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V|E:/HK6/HDL/doan/verilog/verilog/RISC_V/HexDigit.v|
+!s101 -O0
+vIDEX
+Ica:XDdl]g<C7^`QfLAo?S1
+VBQRImaU3PR]03ILZX8_UM3
+R1
+w1776283484
+8E:/HK6/HDL/doan/verilog/verilog/IDEX/IDEX.v
+FE:/HK6/HDL/doan/verilog/verilog/IDEX/IDEX.v
+L0 1
+R2
+r1
+31
+R3
+n@i@d@e@x
+!i10b 1
+!s100 1ecYcoDE`2`mWCXGb51GO1
+!s85 0
+!s108 1779445940.001000
+!s107 E:/HK6/HDL/doan/verilog/verilog/IDEX/IDEX.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/IDEX|E:/HK6/HDL/doan/verilog/verilog/IDEX/IDEX.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/IDEX -O0
+vIFID
+I5=HCljBOOB^664JEFUgW13
+V8>7R90=^elIk<f4Zj<SE<2
+R1
+w1776283458
+8E:/HK6/HDL/doan/verilog/verilog/IFID/IFID.v
+FE:/HK6/HDL/doan/verilog/verilog/IFID/IFID.v
+L0 1
+R2
+r1
+31
+R3
+n@i@f@i@d
+!i10b 1
+!s100 1Fa03[RX>h@2RHSlejEMO3
+!s85 0
+!s108 1779445939.962000
+!s107 E:/HK6/HDL/doan/verilog/verilog/IFID/IFID.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/IFID|E:/HK6/HDL/doan/verilog/verilog/IFID/IFID.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/IFID -O0
+vIMEM
+I^J@0;;dK[b`G_6o]m7mnm1
+VlOagJU_ETbFKKP]6hea451
+R1
+w1779428441
+8E:/HK6/HDL/doan/verilog/verilog/IMEM/IMEM.v
+FE:/HK6/HDL/doan/verilog/verilog/IMEM/IMEM.v
+L0 1
+R2
+r1
+31
+R3
+n@i@m@e@m
+!i10b 1
+!s100 [G?75:kLN0@m@O8Fb7X5b1
+!s85 0
+!s108 1779445940.316000
+!s107 E:/HK6/HDL/doan/verilog/verilog/IMEM/IMEM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/IMEM|E:/HK6/HDL/doan/verilog/verilog/IMEM/IMEM.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/IMEM -O0
+vImmGen
+Ihca:2e6zgWHh6R_k?K^WR0
+VMERZnd=8?HKl^^ElYlk4E1
+R1
+w1776278728
+8E:/HK6/HDL/doan/verilog/verilog/ImmGen/ImmGen.v
+FE:/HK6/HDL/doan/verilog/verilog/ImmGen/ImmGen.v
+L0 1
+R2
+r1
+31
+R3
+n@imm@gen
+!i10b 1
+!s100 U9C:h1I0<0fS;=`F4jgcX3
+!s85 0
+!s108 1779445939.931000
+!s107 E:/HK6/HDL/doan/verilog/verilog/ImmGen/ImmGen.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/ImmGen|E:/HK6/HDL/doan/verilog/verilog/ImmGen/ImmGen.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/ImmGen -O0
+vMEMcontrol
+If?PEYn;D_djNfi=`T?zJ@2
+VcgWTAEm8E`WCe@[DUQdaD0
+R1
+w1776164596
+8E:/HK6/HDL/doan/verilog/verilog/MEMcontrol/MEMcontrol.v
+FE:/HK6/HDL/doan/verilog/verilog/MEMcontrol/MEMcontrol.v
+L0 1
+R2
+r1
+31
+R3
+n@m@e@mcontrol
+!i10b 1
+!s100 :[Af2hoi=M?J=c?;]o0432
+!s85 0
+!s108 1779445939.898000
+!s107 E:/HK6/HDL/doan/verilog/verilog/MEMcontrol/MEMcontrol.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/MEMcontrol|E:/HK6/HDL/doan/verilog/verilog/MEMcontrol/MEMcontrol.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/MEMcontrol -O0
+vMEMWB
+IOdgN<lNhk=l=R=DN[ICR63
+Vh9boif@[I^X2;dC4TE8F33
+R1
+w1776283568
+8E:/HK6/HDL/doan/verilog/verilog/MEMWB/MEMWB.v
+FE:/HK6/HDL/doan/verilog/verilog/MEMWB/MEMWB.v
+L0 1
+R2
+r1
+31
+R3
+n@m@e@m@w@b
+!i10b 1
+!s100 JESALIeOXWZXm:IX;j=TP1
+!s85 0
+!s108 1779445939.859000
+!s107 E:/HK6/HDL/doan/verilog/verilog/MEMWB/MEMWB.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/MEMWB|E:/HK6/HDL/doan/verilog/verilog/MEMWB/MEMWB.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/MEMWB -O0
+vPC
+Ii3?2h0Uk3j;ohz[FYWa9<2
+V;:6ieHF_JJCU]OfaRC:RW2
+R1
+w1776348748
+8E:/HK6/HDL/doan/verilog/verilog/PC/PC.v
+FE:/HK6/HDL/doan/verilog/verilog/PC/PC.v
+L0 1
+R2
+r1
+31
+R3
+n@p@c
+!i10b 1
+!s100 a5FVhMOST9Vn8<ZDA;OGf0
+!s85 0
+!s108 1779445939.827000
+!s107 E:/HK6/HDL/doan/verilog/verilog/PC/PC.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/PC|E:/HK6/HDL/doan/verilog/verilog/PC/PC.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/PC -O0
+vpipeline_tb
+!i10b 1
+!s100 z:28Y_VZ;XO0z3o655UVg3
+I=FXKGbdWMS?9<j@l_Te170
+Vha:EH@4iIGC?Ge=4ci:j?1
+R1
+w1779440707
+8E:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v
+FE:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1779445940.389000
+!s107 E:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V|E:/HK6/HDL/doan/verilog/verilog/RISC_V/pipeline_tb.v|
+!s101 -O0
+R3
+R4
+vRegister_File
+ITj>0>10F5;Yf4>9]H8^hL3
+V^@=>Z51I_ReQ3kF?:;l]73
+R1
+w1779398637
+8E:/HK6/HDL/doan/verilog/verilog/RegisterFile/Register_File.v
+FE:/HK6/HDL/doan/verilog/verilog/RegisterFile/Register_File.v
+L0 1
+R2
+r1
+31
+R3
+n@register_@file
+!i10b 1
+!s100 jfAdK?<YmLM6HKeBD5jiD0
+!s85 0
+!s108 1779445939.790000
+!s107 E:/HK6/HDL/doan/verilog/verilog/RegisterFile/Register_File.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/RegisterFile|E:/HK6/HDL/doan/verilog/verilog/RegisterFile/Register_File.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RegisterFile -O0
+vRISC_V
+Ie`idZiZZC@S?oKhS<I@I11
+VW@PK5X^LIK@e:TGmOSkMT2
+R1
+w1779440389
+8E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V.v
+FE:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V.v
+L0 1
+R2
+r1
+31
+R3
+n@r@i@s@c_@v
+R4
+!i10b 1
+!s100 8>SB^Jfk>e7;LFZCDHo3l1
+!s85 0
+!s108 1779445940.243000
+!s107 E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V|E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V.v|
+!s101 -O0
+vWBcontrol
+IWBm=64eKOV3dLka_`QWN42
+V]8S`0O<O1IL]3c@bZm6]b0
+R1
+w1776166262
+8E:/HK6/HDL/doan/verilog/verilog/WBcontrol/WBcontrol.v
+FE:/HK6/HDL/doan/verilog/verilog/WBcontrol/WBcontrol.v
+L0 1
+R2
+r1
+31
+R3
+n@w@bcontrol
+!i10b 1
+!s100 0PQd;PMi8@13Li<Sk4I7a1
+!s85 0
+!s108 1779445939.758000
+!s107 E:/HK6/HDL/doan/verilog/verilog/WBcontrol/WBcontrol.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/WBcontrol|E:/HK6/HDL/doan/verilog/verilog/WBcontrol/WBcontrol.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/WBcontrol -O0

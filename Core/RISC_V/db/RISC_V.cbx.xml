@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="RISC_V">
+		<CBX_INST_ENTRY INSTANCE_NAME="|RISC_V|DMEM:dmem|altsyncram:ram_rtl_0" CBX_FILE_NAME="altsyncram_8hg1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

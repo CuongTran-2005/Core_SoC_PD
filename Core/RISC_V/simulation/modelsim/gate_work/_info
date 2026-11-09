@@ -1,0 +1,47 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\HK6\HDL\doan\verilog\verilog\RISC_V\simulation\modelsim
+vRISC_V
+IVc<=Vb8KNW]:bH:8j9:=X2
+VH_^;CJClnhAQ;8FYL6SfV3
+Z1 dE:\HK6\HDL\doan\verilog\verilog\RISC_V\simulation\modelsim
+w1778815542
+8RISC_V.vo
+FRISC_V.vo
+L0 31
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+n@r@i@s@c_@v
+!i10b 1
+!s100 UQVN=iaEYR=?lL7;NG=SY0
+!s85 0
+!s108 1778816185.459000
+!s107 RISC_V.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|RISC_V.vo|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+. -O0
+vRISC_V_tb
+!i10b 1
+!s100 ?Qi<[KDD?Eghi=Kk<F`If1
+ILWh:?LH6CEMeXVENAj=340
+V5;=Q^PQ:AXW4=9k5Tl1302
+R1
+w1776348170
+8E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V_tb.v
+FE:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V_tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1778816185.480000
+!s107 E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V|E:/HK6/HDL/doan/verilog/verilog/RISC_V/RISC_V_tb.v|
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+E:/HK6/HDL/doan/verilog/verilog/RISC_V -O0
+n@r@i@s@c_@v_tb
