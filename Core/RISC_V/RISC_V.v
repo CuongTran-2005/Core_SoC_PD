@@ -1,30 +1,57 @@
 module RISC_V (
-    input CLOCK_50,
-    input [0:0] KEY,
-	 input [8:0] SW,
-	 output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7,
-	 output [0:31] IFinst, IDinst, EXinst, MEMinst, WBinst
+    input wire clk,
+    input wire rst,
+
+    //========================================
+    // AXI4-Lite Master: Read Address
+    //========================================
+    output wire [31:0] axi_araddr,
+    output wire        axi_arvalid,
+    input  wire        axi_arready,
+
+    //========================================
+    // AXI4-Lite Master: Read Data
+    //========================================
+    input  wire [31:0] axi_rdata,
+    input  wire [1:0]  axi_rresp,
+    input  wire        axi_rvalid,
+    output wire        axi_rready,
+
+    //========================================
+    // AXI4-Lite Master: Write Address
+    //========================================
+    output wire [31:0] axi_awaddr,
+    output wire        axi_awvalid,
+    input  wire        axi_awready,
+
+    //========================================
+    // AXI4-Lite Master: Write Data
+    //========================================
+    output wire [31:0] axi_wdata,
+    output wire [3:0]  axi_wstrb,
+    output wire        axi_wvalid,
+    input  wire        axi_wready,
+
+    //========================================
+    // AXI4-Lite Master: Write Response
+    //========================================
+    input  wire [1:0]  axi_bresp,
+    input  wire        axi_bvalid,
+    output wire        axi_bready
 );
 
     // =========================================================================
     // 1. KHAI BÁO CÁC DÂY NỐI (WIRES)
     // =========================================================================
 	 
-	 wire clk = CLOCK_50;
-	 wire rst = !KEY[0]; 
-
-    // Dây nối dùng để kiểm tra
-	 
-	 wire [31:0] rf_output_wire, dmem_output_wire, output_wire; 
-	 
-	 
 	 // Dây nối trong datapath 
     // Tầng IF
-    wire [31:0] pc_next, pc_curr, pc_plus4_if, inst_if;
+    wire [31:0] pc_next, pc_curr, pc_plus4_if, inst_if, stall_pc, stall_if;
     
     // Tầng ID
     wire [31:0] pc_id, inst_id, rdata1_id, rdata2_id;
-    wire stall_pc, stall_ifid, clr_ifid, clr_idex;
+    wire stall_ifid, clr_ifid, clr_idex;
+	 wire hazard_stall_pc, hazard_stall_ifid;
     
     // Tầng EX
     wire [31:0] pc_ex, rdata1_ex, rdata2_ex, inst_ex, imm_ex;
@@ -38,12 +65,21 @@ module RISC_V (
 
     // Tầng MEM
     wire [31:0] pc_mem, alu_result_mem, rdata2_mem, inst_mem, mem_data_mem;
-    wire mem_rw;
+    wire mem_rw, is_load_store;
 
     // Tầng WB
     wire [31:0] pc_plus4_wb, alu_result_wb, mem_data_wb, inst_wb, wdata_wb;
     wire [1:0] wb_sel;
     wire reg_wen_wb;
+	 
+	 //Tín hiệu điều khiển BUS, arbiter
+	 wire imem_req, imem_ready;
+	 wire [9:0]  imem_addr;
+	 wire [31:0] imem_rdata;
+	 
+	 wire dmem_busy, dmem_req, dmem_we, dmem_ready;
+	 wire [31:0] dmem_addr, dmem_wdata, dmem_rdata;
+	 
 
     // =========================================================================
     // 2. KẾT NỐI CÁC KHỐI (INSTANTIATION)
@@ -57,8 +93,20 @@ module RISC_V (
         .clk(clk), .rst(rst), .Stall_PC(stall_pc), .PCin(pc_next), .PCout(pc_curr)
     );
 	 
+	 assign stall_if = dmem_busy;
+	 assign stall_pc   = hazard_stall_pc | dmem_busy;
+    assign stall_ifid = hazard_stall_ifid | dmem_busy;
+	 
 	 IMEM imem (
-        .addr(pc_curr), .inst(inst_if)
+        .clk(clk),
+        .rst(rst),
+        .stall_if(stall_if),
+        .pc_in(pc_curr),
+        .imem_req(imem_req),
+        .imem_addr(imem_addr),
+        .imem_rdata(imem_rdata),
+        .imem_ready(imem_ready),
+        .inst_out(inst_if)
     );
 	 
 	 IFID ifid (
@@ -72,15 +120,12 @@ module RISC_V (
         .clk(clk), .rst(rst),
         .rs1_addr(inst_id[19:15]), .rs2_addr(inst_id[24:20]), .rd_addr(inst_wb[11:7]),
         .wdata(wdata_wb), .RegWEn(reg_wen_wb),
-        .rs1_data(rdata1_id), .rs2_data(rdata2_id),
-		  //kiem tra output
-		  .addr(SW[4:0]),
-		  .output_rf(rf_output_wire)
+        .rs1_data(rdata1_id), .rs2_data(rdata2_id)
     );
 
     Hazard_Detection_Unit hazard_unit (
         .instID(inst_id), .instEX(inst_ex), .PCsel(pc_sel),
-        .Stall_PC(stall_pc), .Stall_IF_ID(stall_ifid), 
+        .Stall_PC(hazard_stall_pc), .Stall_IF_ID(hazard_stall_ifid), 
         .CLR_IF_ID(clr_ifid), .CLR_ID_EX(clr_idex)
     );
 
@@ -132,16 +177,29 @@ module RISC_V (
     );
 	 
 	 // ---------- TẦNG MEMORY (MEM) ----------
-    DMEM dmem (
-        .clk(clk), .addr(alu_result_mem), .wdata(rdata2_mem), 
-        .MemRW(mem_rw), .funct3(inst_mem[14:12]), .rdata(mem_data_mem),
-		  //kiem tra output
-		  .addr_output(SW[7:0]),
-		  .output_dmem(dmem_output_wire)
+		
+	 DMEM dmem (
+        .clk(clk), 
+        .rst(rst),
+        .mem_valid(is_load_store),
+        .addr(alu_result_mem), 
+        .wdata(rdata2_mem), 
+        .MemRW(mem_rw), 
+        .funct3(inst_mem[14:12]), 
+        .rdata(mem_data_mem),
+        // Giao tiếp qua các cổng port ra ngoài Core để kết nối Arbiter
+        .dmem_busy(dmem_busy),
+        .dmem_req(dmem_req),
+        .dmem_addr(dmem_addr),
+        .dmem_we(dmem_we),
+        .dmem_wdata(dmem_wdata),
+        .dmem_ready(dmem_ready),
+        .dmem_rdata(dmem_rdata)
     );
-
+	 
+	 
     MEMcontrol mem_control (
-        .instM(inst_mem), .MemRW(mem_rw)
+        .instM(inst_mem), .MemRW(mem_rw), .is_load_store(is_load_store)
     );
 	 
 	 MEMWB memwb (
@@ -158,26 +216,72 @@ module RISC_V (
 
     assign wdata_wb = (wb_sel == 2'b00) ? pc_plus4_wb :
                       (wb_sel == 2'b01) ? alu_result_wb : mem_data_wb;
-							 
+
+	 //---------------Nối Aarbiter ----------------
+
+	 Arbiter u_arbiter (
+		 .clk          (clk),
+		 .rst          (rst),
+
+		 //========================================
+		 // IMEM
+		 //========================================
+		 .imem_req     (imem_req),
+		 .imem_addr    (imem_addr),
+		 .imem_rdata   (imem_rdata),
+		 .imem_ready   (imem_ready),
+
+		 //========================================
+		 // DMEM
+		 //========================================
+		 .dmem_req     (dmem_req),
+		 .dmem_busy    (dmem_busy),
+		 .dmem_addr    (dmem_addr),
+		 .dmem_we      (dmem_we),
+		 .dmem_wdata   (dmem_wdata),
+		 .dmem_rdata   (dmem_rdata),
+		 .dmem_ready   (dmem_ready),
+
+		 //========================================
+		 // AXI4-Lite Read Address
+		 //========================================
+		 .axi_araddr   (axi_araddr),
+		 .axi_arvalid  (axi_arvalid),
+		 .axi_arready  (axi_arready),
+
+		 //========================================
+		 // AXI4-Lite Read Data
+		 //========================================
+		 .axi_rdata    (axi_rdata),
+		 .axi_rresp    (axi_rresp),
+		 .axi_rvalid   (axi_rvalid),
+		 .axi_rready   (axi_rready),
+
+		 //========================================
+		 // AXI4-Lite Write Address
+		 //========================================
+		 .axi_awaddr   (axi_awaddr),
+		 .axi_awvalid  (axi_awvalid),
+		 .axi_awready  (axi_awready),
+
+		 //========================================
+		 // AXI4-Lite Write Data
+		 //========================================
+		 .axi_wdata    (axi_wdata),
+		 .axi_wstrb    (axi_wstrb),
+		 .axi_wvalid   (axi_wvalid),
+		 .axi_wready   (axi_wready),
+
+		 //========================================
+		 // AXI4-Lite Write Response
+		 //========================================
+		 .axi_bresp    (axi_bresp),
+		 .axi_bvalid   (axi_bvalid),
+		 .axi_bready   (axi_bready)
+	);
+
+
 	
-	 // ----------- Kiểm tra output ---------------
-	 assign output_wire = (SW[8])? dmem_output_wire: rf_output_wire;
-	 
-	 HexDigit h0(output_wire[3:0],   HEX0);
-    HexDigit h1(output_wire[7:4],   HEX1);
-    HexDigit h2(output_wire[11:8],  HEX2);
-    HexDigit h3(output_wire[15:12], HEX3);
-	 HexDigit h4(output_wire[19:16], HEX4);
-    HexDigit h5(output_wire[23:20], HEX5);
-    HexDigit h6(output_wire[27:24], HEX6);
-    HexDigit h7(output_wire[31:28], HEX7);
-	
-	 assign IFinst = inst_if;
-	 assign IDinst = inst_id;
-	 assign EXinst = inst_ex;
-	 assign MEMinst = inst_mem;
-	 assign WBinst = inst_wb;
-	 
 endmodule
 	 
 	 
