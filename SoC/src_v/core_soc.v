@@ -60,24 +60,26 @@ module core_soc
     ,input           spi_miso_i
     ,input           uart_rx_i
     ,input  [ 31:0]  gpio_input_i
-    ,input           ext1_cfg_awready_i
-    ,input           ext1_cfg_wready_i
-    ,input           ext1_cfg_bvalid_i
-    ,input  [  1:0]  ext1_cfg_bresp_i
-    ,input           ext1_cfg_arready_i
-    ,input           ext1_cfg_rvalid_i
-    ,input  [ 31:0]  ext1_cfg_rdata_i
-    ,input  [  1:0]  ext1_cfg_rresp_i
-    ,input           ext1_irq_i
-    ,input           ext2_cfg_awready_i
-    ,input           ext2_cfg_wready_i
-    ,input           ext2_cfg_bvalid_i
-    ,input  [  1:0]  ext2_cfg_bresp_i
-    ,input           ext2_cfg_arready_i
-    ,input           ext2_cfg_rvalid_i
-    ,input  [ 31:0]  ext2_cfg_rdata_i
-    ,input  [  1:0]  ext2_cfg_rresp_i
-    ,input           ext2_irq_i
+
+    // ,input           ext1_cfg_awready_i
+    // ,input           ext1_cfg_wready_i
+    // ,input           ext1_cfg_bvalid_i
+    // ,input  [  1:0]  ext1_cfg_bresp_i
+    // ,input           ext1_cfg_arready_i
+    // ,input           ext1_cfg_rvalid_i
+    // ,input  [ 31:0]  ext1_cfg_rdata_i
+    // ,input  [  1:0]  ext1_cfg_rresp_i
+    // ,input           ext1_irq_i
+    // ,input           ext2_cfg_awready_i
+    // ,input           ext2_cfg_wready_i
+    // ,input           ext2_cfg_bvalid_i
+    // ,input  [  1:0]  ext2_cfg_bresp_i
+    // ,input           ext2_cfg_arready_i
+    // ,input           ext2_cfg_rvalid_i
+    // ,input  [ 31:0]  ext2_cfg_rdata_i
+    // ,input  [  1:0]  ext2_cfg_rresp_i
+    // ,input           ext2_irq_i
+
     ,input           ext3_cfg_awready_i
     ,input           ext3_cfg_wready_i
     ,input           ext3_cfg_bvalid_i
@@ -104,24 +106,26 @@ module core_soc
     ,output          uart_tx_o
     ,output [ 31:0]  gpio_output_o
     ,output [ 31:0]  gpio_output_enable_o
-    ,output          ext1_cfg_awvalid_o
-    ,output [ 31:0]  ext1_cfg_awaddr_o
-    ,output          ext1_cfg_wvalid_o
-    ,output [ 31:0]  ext1_cfg_wdata_o
-    ,output [  3:0]  ext1_cfg_wstrb_o
-    ,output          ext1_cfg_bready_o
-    ,output          ext1_cfg_arvalid_o
-    ,output [ 31:0]  ext1_cfg_araddr_o
-    ,output          ext1_cfg_rready_o
-    ,output          ext2_cfg_awvalid_o
-    ,output [ 31:0]  ext2_cfg_awaddr_o
-    ,output          ext2_cfg_wvalid_o
-    ,output [ 31:0]  ext2_cfg_wdata_o
-    ,output [  3:0]  ext2_cfg_wstrb_o
-    ,output          ext2_cfg_bready_o
-    ,output          ext2_cfg_arvalid_o
-    ,output [ 31:0]  ext2_cfg_araddr_o
-    ,output          ext2_cfg_rready_o
+
+    // ,output          ext1_cfg_awvalid_o
+    // ,output [ 31:0]  ext1_cfg_awaddr_o
+    // ,output          ext1_cfg_wvalid_o
+    // ,output [ 31:0]  ext1_cfg_wdata_o
+    // ,output [  3:0]  ext1_cfg_wstrb_o
+    // ,output          ext1_cfg_bready_o
+    // ,output          ext1_cfg_arvalid_o
+    // ,output [ 31:0]  ext1_cfg_araddr_o
+    // ,output          ext1_cfg_rready_o
+    // ,output          ext2_cfg_awvalid_o
+    // ,output [ 31:0]  ext2_cfg_awaddr_o
+    // ,output          ext2_cfg_wvalid_o
+    // ,output [ 31:0]  ext2_cfg_wdata_o
+    // ,output [  3:0]  ext2_cfg_wstrb_o
+    // ,output          ext2_cfg_bready_o
+    // ,output          ext2_cfg_arvalid_o
+    // ,output [ 31:0]  ext2_cfg_araddr_o
+    // ,output          ext2_cfg_rready_o
+
     ,output          ext3_cfg_awvalid_o
     ,output [ 31:0]  ext3_cfg_awaddr_o
     ,output          ext3_cfg_wvalid_o
@@ -223,6 +227,46 @@ wire  [ 31:0]  periph3_wdata_w;
 wire           periph3_rready_w;
 wire           periph2_wvalid_w;
 
+// SRAM
+wire           sram_awvalid_w;
+wire  [ 31:0]  sram_awaddr_w;
+wire           sram_wvalid_w;
+wire  [ 31:0]  sram_wdata_w;
+wire  [  3:0]  sram_wstrb_w;
+wire           sram_bready_w;
+wire           sram_arvalid_w;
+wire  [ 31:0]  sram_araddr_w;
+wire           sram_rready_w;
+
+wire           sram_awready_w;
+wire           sram_wready_w;
+wire           sram_bvalid_w;
+wire  [  1:0]  sram_bresp_w;
+wire           sram_arready_w;
+wire           sram_rvalid_w;
+wire  [ 31:0]  sram_rdata_w;
+wire  [  1:0]  sram_rresp_w;
+
+// Accelerator
+wire           accel_awvalid_w;
+wire  [ 31:0]  accel_awaddr_w;
+wire           accel_wvalid_w;
+wire  [ 31:0]  accel_wdata_w;
+wire  [  3:0]  accel_wstrb_w;
+wire           accel_bready_w;
+wire           accel_arvalid_w;
+wire  [ 31:0]  accel_araddr_w;
+wire           accel_rready_w;
+
+wire           accel_awready_w;
+wire           accel_wready_w;
+wire           accel_bvalid_w;
+wire  [  1:0]  accel_bresp_w;
+wire           accel_arready_w;
+wire           accel_rvalid_w;
+wire  [ 31:0]  accel_rdata_w;
+wire  [  1:0]  accel_rresp_w;
+
 
 irq_ctrl
 u_intc
@@ -275,6 +319,7 @@ u_dist
     ,.inport_arvalid_i(inport_arvalid_i)
     ,.inport_araddr_i(inport_araddr_i)
     ,.inport_rready_i(inport_rready_i)
+    
     ,.outport0_awready_i(periph0_awready_w)
     ,.outport0_wready_i(periph0_wready_w)
     ,.outport0_bvalid_i(periph0_bvalid_w)
@@ -283,6 +328,7 @@ u_dist
     ,.outport0_rvalid_i(periph0_rvalid_w)
     ,.outport0_rdata_i(periph0_rdata_w)
     ,.outport0_rresp_i(periph0_rresp_w)
+    
     ,.outport1_awready_i(periph1_awready_w)
     ,.outport1_wready_i(periph1_wready_w)
     ,.outport1_bvalid_i(periph1_bvalid_w)
@@ -291,6 +337,7 @@ u_dist
     ,.outport1_rvalid_i(periph1_rvalid_w)
     ,.outport1_rdata_i(periph1_rdata_w)
     ,.outport1_rresp_i(periph1_rresp_w)
+    
     ,.outport2_awready_i(periph2_awready_w)
     ,.outport2_wready_i(periph2_wready_w)
     ,.outport2_bvalid_i(periph2_bvalid_w)
@@ -299,6 +346,7 @@ u_dist
     ,.outport2_rvalid_i(periph2_rvalid_w)
     ,.outport2_rdata_i(periph2_rdata_w)
     ,.outport2_rresp_i(periph2_rresp_w)
+    
     ,.outport3_awready_i(periph3_awready_w)
     ,.outport3_wready_i(periph3_wready_w)
     ,.outport3_bvalid_i(periph3_bvalid_w)
@@ -307,6 +355,7 @@ u_dist
     ,.outport3_rvalid_i(periph3_rvalid_w)
     ,.outport3_rdata_i(periph3_rdata_w)
     ,.outport3_rresp_i(periph3_rresp_w)
+    
     ,.outport4_awready_i(periph4_awready_w)
     ,.outport4_wready_i(periph4_wready_w)
     ,.outport4_bvalid_i(periph4_bvalid_w)
@@ -315,22 +364,43 @@ u_dist
     ,.outport4_rvalid_i(periph4_rvalid_w)
     ,.outport4_rdata_i(periph4_rdata_w)
     ,.outport4_rresp_i(periph4_rresp_w)
-    ,.outport5_awready_i(ext1_cfg_awready_i)
-    ,.outport5_wready_i(ext1_cfg_wready_i)
-    ,.outport5_bvalid_i(ext1_cfg_bvalid_i)
-    ,.outport5_bresp_i(ext1_cfg_bresp_i)
-    ,.outport5_arready_i(ext1_cfg_arready_i)
-    ,.outport5_rvalid_i(ext1_cfg_rvalid_i)
-    ,.outport5_rdata_i(ext1_cfg_rdata_i)
-    ,.outport5_rresp_i(ext1_cfg_rresp_i)
-    ,.outport6_awready_i(ext2_cfg_awready_i)
-    ,.outport6_wready_i(ext2_cfg_wready_i)
-    ,.outport6_bvalid_i(ext2_cfg_bvalid_i)
-    ,.outport6_bresp_i(ext2_cfg_bresp_i)
-    ,.outport6_arready_i(ext2_cfg_arready_i)
-    ,.outport6_rvalid_i(ext2_cfg_rvalid_i)
-    ,.outport6_rdata_i(ext2_cfg_rdata_i)
-    ,.outport6_rresp_i(ext2_cfg_rresp_i)
+
+    // ,.outport5_awready_i(ext1_cfg_awready_i)
+    // ,.outport5_wready_i(ext1_cfg_wready_i)
+    // ,.outport5_bvalid_i(ext1_cfg_bvalid_i)
+    // ,.outport5_bresp_i(ext1_cfg_bresp_i)
+    // ,.outport5_arready_i(ext1_cfg_arready_i)
+    // ,.outport5_rvalid_i(ext1_cfg_rvalid_i)
+    // ,.outport5_rdata_i(ext1_cfg_rdata_i)
+    // ,.outport5_rresp_i(ext1_cfg_rresp_i)
+    //sram
+    ,.outport5_awready_i(sram_awready_w)
+    ,.outport5_wready_i(sram_wready_w)
+    ,.outport5_bvalid_i(sram_bvalid_w)
+    ,.outport5_bresp_i(sram_bresp_w)
+    ,.outport5_arready_i(sram_arready_w)
+    ,.outport5_rvalid_i(sram_rvalid_w)
+    ,.outport5_rdata_i(sram_rdata_w)
+    ,.outport5_rresp_i(sram_rresp_w)
+
+    // ,.outport6_awready_i(ext2_cfg_awready_i)
+    // ,.outport6_wready_i(ext2_cfg_wready_i)
+    // ,.outport6_bvalid_i(ext2_cfg_bvalid_i)
+    // ,.outport6_bresp_i(ext2_cfg_bresp_i)
+    // ,.outport6_arready_i(ext2_cfg_arready_i)
+    // ,.outport6_rvalid_i(ext2_cfg_rvalid_i)
+    // ,.outport6_rdata_i(ext2_cfg_rdata_i)
+    // ,.outport6_rresp_i(ext2_cfg_rresp_i)
+    //accelerator
+    ,.outport6_awready_i(accel_awready_w)
+    ,.outport6_wready_i(accel_wready_w)
+    ,.outport6_bvalid_i(accel_bvalid_w)
+    ,.outport6_bresp_i(accel_bresp_w)
+    ,.outport6_arready_i(accel_arready_w)
+    ,.outport6_rvalid_i(accel_rvalid_w)
+    ,.outport6_rdata_i(accel_rdata_w)
+    ,.outport6_rresp_i(accel_rresp_w)
+
     ,.outport7_awready_i(ext3_cfg_awready_i)
     ,.outport7_wready_i(ext3_cfg_wready_i)
     ,.outport7_bvalid_i(ext3_cfg_bvalid_i)
@@ -394,24 +464,47 @@ u_dist
     ,.outport4_arvalid_o(periph4_arvalid_w)
     ,.outport4_araddr_o(periph4_araddr_w)
     ,.outport4_rready_o(periph4_rready_w)
-    ,.outport5_awvalid_o(ext1_cfg_awvalid_o)
-    ,.outport5_awaddr_o(ext1_cfg_awaddr_o)
-    ,.outport5_wvalid_o(ext1_cfg_wvalid_o)
-    ,.outport5_wdata_o(ext1_cfg_wdata_o)
-    ,.outport5_wstrb_o(ext1_cfg_wstrb_o)
-    ,.outport5_bready_o(ext1_cfg_bready_o)
-    ,.outport5_arvalid_o(ext1_cfg_arvalid_o)
-    ,.outport5_araddr_o(ext1_cfg_araddr_o)
-    ,.outport5_rready_o(ext1_cfg_rready_o)
-    ,.outport6_awvalid_o(ext2_cfg_awvalid_o)
-    ,.outport6_awaddr_o(ext2_cfg_awaddr_o)
-    ,.outport6_wvalid_o(ext2_cfg_wvalid_o)
-    ,.outport6_wdata_o(ext2_cfg_wdata_o)
-    ,.outport6_wstrb_o(ext2_cfg_wstrb_o)
-    ,.outport6_bready_o(ext2_cfg_bready_o)
-    ,.outport6_arvalid_o(ext2_cfg_arvalid_o)
-    ,.outport6_araddr_o(ext2_cfg_araddr_o)
-    ,.outport6_rready_o(ext2_cfg_rready_o)
+
+    // ,.outport5_awvalid_o(ext1_cfg_awvalid_o)
+    // ,.outport5_awaddr_o(ext1_cfg_awaddr_o)
+    // ,.outport5_wvalid_o(ext1_cfg_wvalid_o)
+    // ,.outport5_wdata_o(ext1_cfg_wdata_o)
+    // ,.outport5_wstrb_o(ext1_cfg_wstrb_o)
+    // ,.outport5_bready_o(ext1_cfg_bready_o)
+    // ,.outport5_arvalid_o(ext1_cfg_arvalid_o)
+    // ,.outport5_araddr_o(ext1_cfg_araddr_o)
+    // ,.outport5_rready_o(ext1_cfg_rready_o)
+//sram
+    ,.outport5_awvalid_o(sram_awvalid_w)
+    ,.outport5_awaddr_o(sram_awaddr_w)
+    ,.outport5_wvalid_o(sram_wvalid_w)
+    ,.outport5_wdata_o(sram_wdata_w)
+    ,.outport5_wstrb_o(sram_wstrb_w)
+    ,.outport5_bready_o(sram_bready_w)
+    ,.outport5_arvalid_o(sram_arvalid_w)
+    ,.outport5_araddr_o(sram_araddr_w)
+    ,.outport5_rready_o(sram_rready_w)
+
+    // ,.outport6_awvalid_o(ext2_cfg_awvalid_o)
+    // ,.outport6_awaddr_o(ext2_cfg_awaddr_o)
+    // ,.outport6_wvalid_o(ext2_cfg_wvalid_o)
+    // ,.outport6_wdata_o(ext2_cfg_wdata_o)
+    // ,.outport6_wstrb_o(ext2_cfg_wstrb_o)
+    // ,.outport6_bready_o(ext2_cfg_bready_o)
+    // ,.outport6_arvalid_o(ext2_cfg_arvalid_o)
+    // ,.outport6_araddr_o(ext2_cfg_araddr_o)
+    // ,.outport6_rready_o(ext2_cfg_rready_o)
+
+    ,.outport6_awvalid_o(accel_awvalid_w)
+    ,.outport6_awaddr_o(accel_awaddr_w)
+    ,.outport6_wvalid_o(accel_wvalid_w)
+    ,.outport6_wdata_o(accel_wdata_w)
+    ,.outport6_wstrb_o(accel_wstrb_w)
+    ,.outport6_bready_o(accel_bready_w)
+    ,.outport6_arvalid_o(accel_arvalid_w)
+    ,.outport6_araddr_o(accel_araddr_w)
+    ,.outport6_rready_o(accel_rready_w)
+
     ,.outport7_awvalid_o(ext3_cfg_awvalid_o)
     ,.outport7_awaddr_o(ext3_cfg_awaddr_o)
     ,.outport7_wvalid_o(ext3_cfg_wvalid_o)
@@ -555,6 +648,69 @@ u_gpio
     ,.intr_o(interrupt3_w)
 );
 
+//-----------------------------------------------------------------
+// SRAM
+//-----------------------------------------------------------------
+axi4lite_sram_wrapper
+#(
+     .INIT_FILE("")
+)
+u_sram
+(
+    // Inputs
+     .clk_i(clk_i)
+    ,.rst_i(rst_i)
 
+    // AXI4-Lite Inputs
+    ,.awvalid_i(sram_awvalid_w)
+    ,.awaddr_i(sram_awaddr_w)
+    ,.wvalid_i(sram_wvalid_w)
+    ,.wdata_i(sram_wdata_w)
+    ,.wstrb_i(sram_wstrb_w)
+    ,.bready_i(sram_bready_w)
+    ,.arvalid_i(sram_arvalid_w)
+    ,.araddr_i(sram_araddr_w)
+    ,.rready_i(sram_rready_w)
+
+    // AXI4-Lite Outputs
+    ,.awready_o(sram_awready_w)
+    ,.wready_o(sram_wready_w)
+    ,.bvalid_o(sram_bvalid_w)
+    ,.bresp_o(sram_bresp_w)
+    ,.arready_o(sram_arready_w)
+    ,.rvalid_o(sram_rvalid_w)
+    ,.rdata_o(sram_rdata_w)
+    ,.rresp_o(sram_rresp_w)
+);
+
+// Accelerator
+axi4lite_accel_wrapper
+u_accel
+(
+    // Inputs
+     .clk_i(clk_i)
+    ,.rst_i(rst_i)
+
+    // AXI4-Lite Inputs
+    ,.awvalid_i(accel_awvalid_w)
+    ,.awaddr_i(accel_awaddr_w)
+    ,.wvalid_i(accel_wvalid_w)
+    ,.wdata_i(accel_wdata_w)
+    ,.wstrb_i(accel_wstrb_w)
+    ,.bready_i(accel_bready_w)
+    ,.arvalid_i(accel_arvalid_w)
+    ,.araddr_i(accel_araddr_w)
+    ,.rready_i(accel_rready_w)
+
+    // AXI4-Lite Outputs
+    ,.awready_o(accel_awready_w)
+    ,.wready_o(accel_wready_w)
+    ,.bvalid_o(accel_bvalid_w)
+    ,.bresp_o(accel_bresp_w)
+    ,.arready_o(accel_arready_w)
+    ,.rvalid_o(accel_rvalid_w)
+    ,.rdata_o(accel_rdata_w)
+    ,.rresp_o(accel_rresp_w)
+);
 
 endmodule
