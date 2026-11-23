@@ -287,8 +287,8 @@ u_intc
     ,.interrupt1_i(interrupt1_w)
     ,.interrupt2_i(interrupt2_w)
     ,.interrupt3_i(interrupt3_w)
-    ,.interrupt4_i(ext1_irq_i)
-    ,.interrupt5_i(ext2_irq_i)
+    ,.interrupt4_i(0)
+    ,.interrupt5_i(0)
     ,.interrupt6_i(ext3_irq_i)
 
     // Outputs
