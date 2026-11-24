@@ -912,12 +912,16 @@ reg [COUNT_W-1:0] count_q;
 //-----------------------------------------------------------------
 // Sequential
 //-----------------------------------------------------------------
+integer i;
+
 always @ (posedge clk_i or posedge rst_i)
 if (rst_i)
 begin
     count_q   <= {(COUNT_W) {1'b0}};
     rd_ptr_q  <= {(ADDR_W) {1'b0}};
     wr_ptr_q  <= {(ADDR_W) {1'b0}};
+    for (i = 0; i < DEPTH; i = i + 1)
+        ram_q[i] <= {WIDTH{1'b0}};
 end
 else if (flush_i)
 begin

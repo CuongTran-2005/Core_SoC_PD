@@ -403,7 +403,7 @@ module tb_core_soc;
         if (spi_bits % 8 == 0) spi_nbytes = spi_nbytes + 1;
     end
     always @(negedge spi_clk) if (spi_cs[0] === 1'b0) spi_miso = spi_resp[7 - (spi_bits % 8)];
-
+    always @(spi_resp) if (spi_cs[0] === 1'b0 && (spi_bits % 8) == 0) spi_miso = spi_resp[7];
     task spi_xfer;   // gửi tx, nhận về rx (đợi RX không rỗng)
         input [7:0] tx; input [7:0] slave_resp; output [31:0] rx; integer n; reg [31:0] sr;
         begin
