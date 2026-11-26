@@ -14,13 +14,16 @@ module IFID(
             PCout <= 32'd0;
             inst_out <= 32'h00000013;
         end 
-        else if (clr) begin
-            PCout <= 32'd0;
-            inst_out <= 32'h00000013;
-        end 
+        // (*) sửa lại "ưu tiên stall trước clr để không xóa mất lệnh khi pipeline đang dừng chờ bộ nhớ AXI" //
         else if (!stall) begin
-            PCout <= PC;
-            inst_out <= inst;
+            if (clr) begin
+                PCout <= 32'd0;
+                inst_out <= 32'h00000013;
+            end 
+            else begin
+                PCout <= PC;
+                inst_out <= inst;
+            end
         end
     end
     

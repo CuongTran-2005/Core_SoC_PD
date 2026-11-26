@@ -1,6 +1,7 @@
 module EXMEM(
     input clk,
     input rst,
+    input stall,
     input [31:0] PC,
     input [31:0] ALU_result,
     input [31:0] rdata2,
@@ -17,7 +18,7 @@ module EXMEM(
             ALU_result_out <= 32'd0;
             rdata2_out <= 32'd0;
             inst_out <= 32'h00000013;
-        end else begin
+        end else if (!stall) begin
             PCout <= PC;
             ALU_result_out <= ALU_result;
             rdata2_out <= rdata2;

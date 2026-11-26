@@ -1,6 +1,7 @@
 module IDEX(
     input clk,
     input rst,
+    input stall,
     input clr,
     input [31:0] PC,
     input [31:0] rdata1,
@@ -18,16 +19,18 @@ module IDEX(
             rdata1_out <= 32'd0;
             rdata2_out <= 32'd0;
             inst_out   <= 32'h00000013;
-        end else if (clr) begin
-            PCout      <= 32'd0;
-            rdata1_out <= 32'd0;
-            rdata2_out <= 32'd0;
-            inst_out   <= 32'h00000013;
-        end else begin
-            PCout      <= PC;
-            rdata1_out <= rdata1;
-            rdata2_out <= rdata2;
-            inst_out   <= inst;
+        end else if (!stall) begin
+            if (clr) begin
+                PCout      <= 32'd0;
+                rdata1_out <= 32'd0;
+                rdata2_out <= 32'd0;
+                inst_out   <= 32'h00000013;
+            end else begin
+                PCout      <= PC;
+                rdata1_out <= rdata1;
+                rdata2_out <= rdata2;
+                inst_out   <= inst;
+            end
         end
     end
     

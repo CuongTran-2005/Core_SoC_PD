@@ -46,7 +46,8 @@ module RISC_V (
 	 
 	 // Dây nối trong datapath 
     // Tầng IF
-    wire [31:0] pc_next, pc_curr, pc_plus4_if, inst_if, stall_pc, stall_if;
+    wire [31:0] pc_next, pc_curr, pc_plus4_if, inst_if;
+    wire        stall_pc, stall_if;
     
     // Tầng ID
     wire [31:0] pc_id, inst_id, rdata1_id, rdata2_id;
@@ -73,8 +74,8 @@ module RISC_V (
     wire reg_wen_wb;
 	 
 	 //Tín hiệu điều khiển BUS, arbiter
-	 wire imem_req, imem_ready;
-	 wire [9:0]  imem_addr;
+	 wire imem_req, imem_ready, imem_busy, pipe_stall;
+	 wire [31:0] imem_addr;
 	 wire [31:0] imem_rdata;
 	 
 	 wire dmem_busy, dmem_req, dmem_we, dmem_ready;
@@ -93,9 +94,10 @@ module RISC_V (
         .clk(clk), .rst(rst), .Stall_PC(stall_pc), .PCin(pc_next), .PCout(pc_curr)
     );
 	 
-	 assign stall_if = dmem_busy;
-	 assign stall_pc   = hazard_stall_pc | dmem_busy;
-    assign stall_ifid = hazard_stall_ifid | dmem_busy;
+	 assign stall_if   = dmem_busy;
+	 assign pipe_stall = imem_busy | dmem_busy;
+	 assign stall_pc   = hazard_stall_pc | pipe_stall;
+    assign stall_ifid = hazard_stall_ifid | pipe_stall;
 	 
 	 IMEM imem (
         .clk(clk),
@@ -106,6 +108,7 @@ module RISC_V (
         .imem_addr(imem_addr),
         .imem_rdata(imem_rdata),
         .imem_ready(imem_ready),
+        .imem_busy(imem_busy),
         .inst_out(inst_if)
     );
 	 
@@ -119,8 +122,9 @@ module RISC_V (
     Register_File reg_file (
         .clk(clk), .rst(rst),
         .rs1_addr(inst_id[19:15]), .rs2_addr(inst_id[24:20]), .rd_addr(inst_wb[11:7]),
-        .wdata(wdata_wb), .RegWEn(reg_wen_wb),
-        .rs1_data(rdata1_id), .rs2_data(rdata2_id)
+        .wdata(wdata_wb), .RegWEn(reg_wen_wb & ~pipe_stall),
+        .rs1_data(rdata1_id), .rs2_data(rdata2_id),
+        .addr(5'b0)
     );
 
     Hazard_Detection_Unit hazard_unit (
@@ -130,7 +134,7 @@ module RISC_V (
     );
 
     IDEX idex (
-        .clk(clk), .rst(rst), .clr(clr_idex),
+        .clk(clk), .rst(rst), .stall(pipe_stall), .clr(clr_idex),
         .PC(pc_id), .rdata1(rdata1_id), .rdata2(rdata2_id), .inst(inst_id),
         .PCout(pc_ex), .rdata1_out(rdata1_ex), .rdata2_out(rdata2_ex), .inst_out(inst_ex)
     );
@@ -171,7 +175,7 @@ module RISC_V (
     );
 
     EXMEM exmem (
-        .clk(clk), .rst(rst),
+        .clk(clk), .rst(rst), .stall(pipe_stall),
         .PC(pc_ex), .ALU_result(alu_result_ex), .rdata2(mux_b_fwd), .inst(inst_ex),
         .PCout(pc_mem), .ALU_result_out(alu_result_mem), .rdata2_out(rdata2_mem), .inst_out(inst_mem)
     );
@@ -181,6 +185,7 @@ module RISC_V (
 	 DMEM dmem (
         .clk(clk), 
         .rst(rst),
+        .imem_busy(imem_busy),
         .mem_valid(is_load_store),
         .addr(alu_result_mem), 
         .wdata(rdata2_mem), 
@@ -203,7 +208,7 @@ module RISC_V (
     );
 	 
 	 MEMWB memwb (
-        .clk(clk), .rst(rst),
+        .clk(clk), .rst(rst), .stall(pipe_stall),
         .PC_plus_4(pc_mem + 4), .ALU_result(alu_result_mem), .mem(mem_data_mem), .inst(inst_mem),
         .PC_plus_4_out(pc_plus4_wb), .ALU_result_out(alu_result_wb), .mem_out(mem_data_wb), .inst_out(inst_wb)
     );

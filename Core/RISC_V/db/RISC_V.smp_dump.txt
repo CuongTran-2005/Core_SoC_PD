@@ -1,0 +1,14 @@
+
+State Machine - |RISC_V|Arbiter:u_arbiter|resp_owner
+Name resp_owner.OWNER_NONE resp_owner.OWNER_DMEM resp_owner.OWNER_IMEM 
+resp_owner.OWNER_NONE 0 0 0 
+resp_owner.OWNER_IMEM 1 0 1 
+resp_owner.OWNER_DMEM 1 1 0 
+
+State Machine - |RISC_V|Arbiter:u_arbiter|state
+Name state.WR_ADDR state.RD_DATA state.RD_ADDR state.IDLE state.WR_RESP 
+state.IDLE 0 0 0 0 0 
+state.RD_ADDR 0 0 1 1 0 
+state.RD_DATA 0 1 0 1 0 
+state.WR_ADDR 1 0 0 1 0 
+state.WR_RESP 0 0 0 1 1 

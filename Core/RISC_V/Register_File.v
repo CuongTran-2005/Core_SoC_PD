@@ -8,8 +8,7 @@ module Register_File (
     input  [31:0] wdata,
     output [31:0] rs1_data,
     output [31:0] rs2_data,
-	 input  [4:0]  addr,
-	 output [31:0] output_rf 
+	 input  [4:0]  addr
 );
 
     reg [31:0] rf [31:0];

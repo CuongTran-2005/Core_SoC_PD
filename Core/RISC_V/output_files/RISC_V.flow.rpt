@@ -1,5 +1,5 @@
 Flow report for RISC_V
-Sun Nov 08 12:56:48 2026
+Thu Nov 26 08:45:48 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Sun Nov 08 12:56:48 2026           ;
+; Flow Status                        ; Successful - Thu Nov 26 08:45:48 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; RISC_V                                          ;
 ; Top-level Entity Name              ; RISC_V                                          ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 18,999                                          ;
-;     Total combinational functions  ; 9,842                                           ;
-;     Dedicated logic registers      ; 9,703                                           ;
-; Total registers                    ; 9703                                            ;
-; Total pins                         ; 227                                             ;
+; Total logic elements               ; 3,426 / 33,216 ( 10 % )                         ;
+;     Total combinational functions  ; 3,019 / 33,216 ( 9 % )                          ;
+;     Dedicated logic registers      ; 1,643 / 33,216 ( 5 % )                          ;
+; Total registers                    ; 1643                                            ;
+; Total pins                         ; 148 / 475 ( 31 % )                              ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 8,192                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                               ;
-; Total PLLs                         ; 0                                               ;
+; Total memory bits                  ; 0 / 483,840 ( 0 % )                             ;
+; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                                  ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
 +------------------------------------+-------------------------------------------------+
 
 
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/08/2026 12:56:19 ;
+; Start date & time ; 11/26/2026 08:45:02 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RISC_V              ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 40350038314048.179411737926872        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 176156946040767.179565750118608       ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; RISC_V_tb      ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; IMEM_tb        ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; pipeline_tb    ;
@@ -104,29 +104,41 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:25     ; 1.0                     ; 4678 MB             ; 00:00:24                           ;
-; Total                ; 00:00:25     ; --                      ; --                  ; 00:00:24                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:12     ; 1.0                     ; 4608 MB             ; 00:00:11                           ;
+; Fitter                    ; 00:00:27     ; 3.7                     ; 5719 MB             ; 00:00:36                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 4588 MB             ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4667 MB             ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4572 MB             ; 00:00:01                           ;
+; Total                     ; 00:00:42     ; --                      ; --                  ; 00:00:50                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------+
-; Flow OS Summary                                                                   ;
-+----------------------+------------------+-----------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; LAPTOP-UPD5H7RF  ; Windows 7 ; 6.2        ; x86_64         ;
-+----------------------+------------------+-----------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; LAPTOP-UIK6GS4S  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; LAPTOP-UIK6GS4S  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; LAPTOP-UIK6GS4S  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; LAPTOP-UIK6GS4S  ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; LAPTOP-UIK6GS4S  ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off RISC_V -c RISC_V
+quartus_fit --read_settings_files=off --write_settings_files=off RISC_V -c RISC_V
+quartus_asm --read_settings_files=off --write_settings_files=off RISC_V -c RISC_V
+quartus_sta RISC_V -c RISC_V
+quartus_eda --read_settings_files=off --write_settings_files=off RISC_V -c RISC_V
 
 
 

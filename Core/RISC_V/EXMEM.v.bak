@@ -1,0 +1,31 @@
+module EXMEM(
+    input clk,
+    input rst,
+    // (*) sửa lại "thêm cổng stall để giữ nguyên lệnh Load/Store ở tầng MEM khi chờ DMEM/IMEM" //
+    input stall,
+    input [31:0] PC,
+    input [31:0] ALU_result,
+    input [31:0] rdata2,
+    input [31:0] inst,
+    output reg [31:0] PCout,
+    output reg [31:0] ALU_result_out,
+    output reg [31:0] rdata2_out,
+    output reg [31:0] inst_out
+);
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            PCout <= 32'd0;
+            ALU_result_out <= 32'd0;
+            rdata2_out <= 32'd0;
+            inst_out <= 32'h00000013;
+        // (*) sửa lại "chỉ cập nhật thanh ghi EX/MEM khi pipeline không bị stall" //
+        end else if (!stall) begin
+            PCout <= PC;
+            ALU_result_out <= ALU_result;
+            rdata2_out <= rdata2;
+            inst_out <= inst;
+        end
+    end
+    
+endmodule
