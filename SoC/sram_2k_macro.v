@@ -9,7 +9,7 @@
 
 module sram_2k_macro #(
     parameter real T_ACCESS = 1.2,      // Access Time: Trễ đọc Clock-to-Q (1.2 ns)
-    parameter      INIT_FILE = ""       // Đường dẫn file Hex nạp trước (Bootcode / Firmware)
+    parameter      INIT_FILE = "D:/ChuyendeViMach_1/Project_SoC_PD/Testbench/instruction/sram_init.hex"       // Đường dẫn file Hex nạp trước (Bootcode / Firmware)
 )(
     input  wire        CLK,  // Xung nhịp đồng bộ (Clock)
     input  wire        CEN,  // Chip Enable (Active Low: 0 = Hoạt động, 1 = Nghỉ)

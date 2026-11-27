@@ -1,0 +1,40 @@
+module RISC_V_WRAPPER (
+    input  wire        CLOCK_50,
+    input  wire [0:0]  KEY,
+
+    // External SRAM interface
+    output wire        SRAM_CEN,
+    output wire        SRAM_WEN,
+    output wire [9:0]  SRAM_A,
+    output wire [31:0] SRAM_D,
+    input  wire [31:0] SRAM_Q
+);
+
+    // Internal SRAM interface
+    wire        sram_en;
+    wire        sram_we;
+    wire [9:0]  sram_addr;
+    wire [31:0] sram_wdata;
+    wire [31:0] sram_rdata;
+
+    // Active-high internal control -> Active-low SRAM control
+    assign SRAM_CEN = ~sram_en;
+    assign SRAM_WEN = ~sram_we;
+
+    assign SRAM_A = sram_addr;
+    assign SRAM_D = sram_wdata;
+    assign sram_rdata = SRAM_Q;
+
+    // RISC-V processor
+    RISC_V u_risc_v (
+        .CLOCK_50   (CLOCK_50),
+        .KEY        (KEY),
+
+        .sram_en    (sram_en),
+        .sram_we    (sram_we),
+        .sram_addr  (sram_addr),
+        .sram_wdata (sram_wdata),
+        .sram_rdata (sram_rdata)
+    );
+
+endmodule

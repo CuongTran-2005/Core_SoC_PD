@@ -6,7 +6,8 @@ module Arbiter (
     // IMEM interface
     //==================================================
     input  wire        imem_req,
-    input  wire [9:0]  imem_addr,
+    // (*) sửa lại "mở rộng imem_addr lên 32-bit để giữ nguyên địa chỉ đầy đủ cho AXI4-Lite" //
+    input  wire [31:0] imem_addr,
     output wire [31:0] imem_rdata,
     output wire        imem_ready,
 
@@ -97,7 +98,6 @@ module Arbiter (
 
     //==================================================
     // Arbitration logic
-    // Giữ nguyên nguyên tắc ưu tiên của bạn
     //==================================================
     always @(*) begin
         grant_owner = OWNER_NONE;
@@ -185,27 +185,19 @@ module Arbiter (
 
                         resp_owner <= OWNER_DMEM;
 
-                        // Preserve the original SRAM word mapping
-                        addr_q  <= {20'b0, dmem_addr[11:2], 2'b00};
+                        // (*) sửa lại "giữ nguyên toàn bộ địa chỉ 32-bit word-aligned trên AXI4-Lite để không bị cắt bit cao gây đụng độ vùng nhớ 0x0040_xxxx và 0x1001_xxxx" //
+                        addr_q  <= {dmem_addr[31:2], 2'b00};
                         wdata_q <= dmem_wdata;
-
                         dmem_waiting <= 1'b1;
-
                         if (dmem_we)
                             state <= WR_ADDR;
                         else
                             state <= RD_ADDR;
-
                     end
-
                     // IMEM request
                     else if (grant_owner == OWNER_IMEM) begin
-
                         resp_owner <= OWNER_IMEM;
-
-                        // IMEM address is word address
-                        addr_q <= {20'b0, imem_addr, 2'b00};
-
+                        addr_q <= {imem_addr[31:2], 2'b00};
                         state <= RD_ADDR;
 
                     end
@@ -215,39 +207,29 @@ module Arbiter (
                 // RD_ADDR: AR handshake
                 //======================================
                 RD_ADDR: begin
-
                     if (axi_arvalid && axi_arready) begin
                         state <= RD_DATA;
                     end
-
                 end
 
                 //======================================
                 // RD_DATA: R handshake
                 //======================================
                 RD_DATA: begin
-
                     if (axi_rvalid && axi_rready) begin
-
                         state <= IDLE;
-
                         if (resp_owner == OWNER_DMEM)
                             dmem_waiting <= 1'b0;
-
                         resp_owner <= OWNER_NONE;
-
                     end
-
                 end
 
                 //======================================
                 // WR_ADDR: AW and W handshakes
                 //======================================
                 WR_ADDR: begin
-
                     if (axi_awvalid && axi_awready)
                         aw_done <= 1'b1;
-
                     if (axi_wvalid && axi_wready)
                         w_done <= 1'b1;
 
@@ -265,26 +247,18 @@ module Arbiter (
                 // WR_RESP: B handshake
                 //======================================
                 WR_RESP: begin
-
                     if (axi_bvalid && axi_bready) begin
-
                         state <= IDLE;
-
                         dmem_waiting <= 1'b0;
                         resp_owner   <= OWNER_NONE;
-
                         aw_done <= 1'b0;
                         w_done  <= 1'b0;
-
                     end
-
                 end
-
                 default: begin
                     state      <= IDLE;
                     resp_owner <= OWNER_NONE;
                 end
-
             endcase
         end
     end

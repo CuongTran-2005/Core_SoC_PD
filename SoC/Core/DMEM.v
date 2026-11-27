@@ -1,6 +1,8 @@
 module DMEM (
     input         clk,
     input         rst,
+	 
+    input         imem_busy,
 
     input         mem_valid,
     input  [31:0] addr,
@@ -26,6 +28,9 @@ module DMEM (
 
     reg STATE;
     reg active;
+	 
+    reg done;
+    reg [31:0] rdata_reg;
 
     reg [31:0] addr_reg;
     reg [31:0] wdata_reg;
@@ -37,7 +42,7 @@ module DMEM (
 
 	// XỬ LÝ SOTRE 
     always @(*) begin
-        temp_word = dmem_rdata;
+        temp_word = rdata_reg;
         case (funct3_reg)
             3'b000: begin // SB
 						 case (byte_offset)
@@ -64,6 +69,8 @@ module DMEM (
         if (rst) begin
             STATE         <= READ;
             active        <= 1'b0;
+            done          <= 1'b0;
+            rdata_reg     <= 32'b0;
 
             addr_reg      <= 32'b0;
             wdata_reg     <= 32'b0;
@@ -72,7 +79,11 @@ module DMEM (
             byte_offset   <= 2'b0;
         end
         else begin
-            if (!active && mem_valid) begin
+            if (done) begin
+                if (!imem_busy)
+                    done <= 1'b0;
+            end
+            else if (!active && mem_valid) begin
                 active      <= 1'b1;
                 STATE       <= READ;
                 addr_reg    <= addr;
@@ -85,12 +96,14 @@ module DMEM (
                 case (STATE)
                     READ: begin
                         if (dmem_ready) begin
+                            rdata_reg <= dmem_rdata;
                             if (MemRW_reg) begin
                                 STATE <= WRITE;
                             end
                             else begin
                                 // Load completed
                                 active <= 1'b0;
+                                done   <= imem_busy;
                             end
                         end
                     end
@@ -99,6 +112,7 @@ module DMEM (
                             // Store completed
                             active <= 1'b0;
                             STATE  <= READ;
+                            done   <= imem_busy;
                         end
                     end
                 endcase
@@ -106,26 +120,30 @@ module DMEM (
         end
     end
 
+    wire dmem_finish = active && dmem_ready && ((STATE == WRITE) || !MemRW_reg);
+
     assign dmem_req  = active;
     assign dmem_we   = (STATE == WRITE);
     assign dmem_addr = {addr_reg[31:2], 2'b00};
     assign dmem_wdata = temp_word;
-    assign dmem_busy = active | mem_valid;
+    assign dmem_busy = (active || (mem_valid && !done)) && !dmem_finish;
 	
+    wire [31:0] load_word = (active && dmem_ready) ? dmem_rdata : rdata_reg;
+
     wire [7:0] selected_byte =
-        (byte_offset == 2'b00) ? dmem_rdata[7:0]   :
-        (byte_offset == 2'b01) ? dmem_rdata[15:8]  :
-        (byte_offset == 2'b10) ? dmem_rdata[23:16] :
-                                 dmem_rdata[31:24];
+        (byte_offset == 2'b00) ? load_word[7:0]   :
+        (byte_offset == 2'b01) ? load_word[15:8]  :
+        (byte_offset == 2'b10) ? load_word[23:16] :
+                                 load_word[31:24];
 
     wire [15:0] selected_half =
         (byte_offset[1] == 1'b0) ?
-        dmem_rdata[15:0] : dmem_rdata[31:16];
+        load_word[15:0] : load_word[31:16];
 
     assign rdata =
         (funct3_reg == 3'b000) ? {{24{selected_byte[7]}}, selected_byte} :
         (funct3_reg == 3'b001) ? {{16{selected_half[15]}}, selected_half} :
-        (funct3_reg == 3'b010) ? dmem_rdata :
+        (funct3_reg == 3'b010) ? load_word :
         (funct3_reg == 3'b100) ? {24'b0, selected_byte} :
         (funct3_reg == 3'b101) ? {16'b0, selected_half} :
                                  32'b0;

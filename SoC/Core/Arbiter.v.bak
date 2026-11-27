@@ -1,0 +1,110 @@
+module Arbiter (
+    input  wire        clk,
+    input  wire        rst,
+
+    // IMEM
+    input  wire        imem_req,
+    input  wire [31:0] imem_addr,
+    output wire        imem_ready,
+    output wire [31:0] imem_rdata,
+
+    // DMEM
+    input  wire        dmem_req,
+    input  wire [31:0] dmem_addr,
+    input  wire        dmem_we,
+    input  wire [31:0] dmem_wdata,
+    output wire        dmem_ready,
+    output wire [31:0] dmem_rdata,
+
+    // SRAM
+    output wire        mem_read,
+    output wire        mem_write,
+    output wire [31:0] mem_addr,
+    output wire [31:0] mem_wdata,
+    input  wire        mem_ready,
+    input  wire [31:0] mem_rdata
+);
+
+    localparam IDLE   = 2'b00;
+    localparam ACCESS = 2'b01;
+    localparam RESP   = 2'b10;
+
+    reg [1:0] state;
+    reg       owner;  // 0: IMEM, 1: DMEM
+
+    reg        we_reg;
+    reg [31:0] addr_reg;
+    reg [31:0] wdata_reg;
+    reg [31:0] rdata_reg;
+
+    // =====================================================
+    // FSM
+    // =====================================================
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            state     <= IDLE;
+            owner     <= 1'b0;
+            we_reg    <= 1'b0;
+            addr_reg  <= 32'b0;
+            wdata_reg <= 32'b0;
+            rdata_reg <= 32'b0;
+        end
+        else begin
+            case (state)
+
+                IDLE: begin
+                    if (dmem_req) begin
+                        owner     <= 1'b1;
+                        addr_reg  <= dmem_addr;
+                        we_reg    <= dmem_we;
+                        wdata_reg <= dmem_wdata;
+                        state     <= ACCESS;
+                    end
+                    else if (imem_req) begin
+                        owner     <= 1'b0;
+                        addr_reg  <= imem_addr;
+                        we_reg    <= 1'b0;
+                        wdata_reg <= 32'b0;
+                        state     <= ACCESS;
+                    end
+                end
+
+                ACCESS: begin
+                    if (mem_ready) begin
+                        rdata_reg <= mem_rdata;
+                        state     <= RESP;
+                    end
+                end
+
+                RESP: begin
+                    state <= IDLE;
+                end
+
+                default: state <= IDLE;
+
+            endcase
+        end
+    end
+
+    // =====================================================
+    // SRAM CONTROL
+    // =====================================================
+
+    assign mem_addr  = addr_reg;
+    assign mem_wdata = wdata_reg;
+
+    assign mem_read  = (state == ACCESS) && !we_reg;
+    assign mem_write = (state == ACCESS) &&  we_reg;
+
+    // =====================================================
+    // RESPONSE
+    // =====================================================
+
+    assign imem_ready = (state == RESP) && !owner;
+    assign dmem_ready = (state == RESP) &&  owner;
+
+    assign imem_rdata = rdata_reg;
+    assign dmem_rdata = rdata_reg;
+
+endmodule

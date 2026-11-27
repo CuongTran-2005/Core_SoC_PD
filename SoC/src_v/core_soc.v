@@ -40,6 +40,7 @@ module core_soc
      parameter CLK_FREQ         = 50000000
     ,parameter BAUDRATE         = 1000000
     ,parameter C_SCK_RATIO      = 50
+    ,parameter INIT_FILE         = "D:/ChuyendeViMach_1/Project_SoC_PD/Testbench/instruction/sram_init.hex"
 )
 //-----------------------------------------------------------------
 // Ports
@@ -653,7 +654,7 @@ u_gpio
 //-----------------------------------------------------------------
 axi4lite_sram_wrapper
 #(
-     .INIT_FILE("")
+     .INIT_FILE(INIT_FILE)
 )
 u_sram
 (

@@ -1,6 +1,6 @@
 module RISC_V_WRAPPER (
-    input  wire        clk,
-    input  wire [0:0]  rst,
+    input  wire        CLOCK_50,
+    input  wire [0:0]  KEY,
 
     // AXI4-Lite Master interface
 
@@ -33,8 +33,8 @@ module RISC_V_WRAPPER (
 );
 
     RISC_V u_risc_v (
-        .clk          (clk),
-        .rst          (rst),
+        .clk          (CLOCK_50),
+        .rst          (KEY),
 
         .axi_araddr   (axi_araddr),
         .axi_arvalid  (axi_arvalid),

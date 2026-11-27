@@ -7,7 +7,7 @@ module PC (
 );
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            PCout <= 32'h00400000;
+            PCout <= 32'h05000000;
         end
         else if (!Stall_PC) begin
             PCout <= PCin;

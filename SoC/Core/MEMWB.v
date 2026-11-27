@@ -1,6 +1,8 @@
 module MEMWB(
     input clk,
     input rst,
+    // (*) sửa lại "thêm cổng stall để không đẩy dữ liệu chưa sẵn sàng sang tầng WB khi chờ bộ nhớ" //
+    input stall,
     input [31:0] PC_plus_4,
     input [31:0] ALU_result,
     input [31:0] mem,
@@ -17,7 +19,8 @@ module MEMWB(
             ALU_result_out <= 32'd0;
             mem_out <= 32'd0;
             inst_out <= 32'h00000013;
-        end else begin
+        // (*) sửa lại "chỉ cập nhật thanh ghi MEM/WB khi pipeline không bị stall" //
+        end else if (!stall) begin
             PC_plus_4_out <= PC_plus_4;
             ALU_result_out <= ALU_result;
             mem_out <= mem;

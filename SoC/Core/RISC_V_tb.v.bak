@@ -1,0 +1,45 @@
+`timescale 1ns/1ps
+
+module RISC_V_tb();
+    reg clk;
+    reg rst;
+
+    // Khởi tạo module Top
+    RISC_V dut (
+        .clk(clk),
+        .rst(rst)
+    );
+
+    // Tạo xung nhịp clk (10ns mỗi chu kỳ)
+    always #5 clk = ~clk;
+
+    initial begin
+        // Khởi tạo các tín hiệu
+        clk = 0;
+        rst = 1;
+        
+        // Reset hệ thống trong 20ns
+        #20;
+        rst = 0;
+
+        // Chạy trong 200ns để quan sát pipeline
+        #200;
+        
+        $display("--- KẾT QUẢ KIỂM TRA CUỐI CÙNG ---");
+        // Bạn cần thay đổi đường dẫn này tùy theo cấu trúc module Register_File của bạn
+        // Ví dụ: dut.reg_file.rf[3] là giá trị thanh ghi x3
+        $display("x1 (10): %d", dut.reg_file.rf[1]);
+        $display("x2 (20): %d", dut.reg_file.rf[2]);
+        $display("x3 (30): %d", dut.reg_file.rf[3]);
+        $display("x4 (30): %d", dut.reg_file.rf[4]);
+        $display("x6 (60): %d", dut.reg_file.rf[6]);
+        
+        $finish;
+    end
+
+    // Theo dõi PC để biết lệnh đang chạy đến đâu
+    initial begin
+        $monitor("Time: %t | PC: %h | Inst_IF: %h", $time, dut.pc_curr, dut.inst_if);
+    end
+
+endmodule
