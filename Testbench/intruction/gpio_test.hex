@@ -1,0 +1,20 @@
+// SRAM 1024 x 32 - Nap bang $readmemh
+// Test GPIO:
+// 1. Ghi GPIO_DIRECTION (0x04000000) = 0xFFFF0000
+// 2. Ghi GPIO_OUTPUT    (0x04000008) = 0xA5A50000
+// 3. Doc GPIO_INPUT     (0x04000004) -> x4
+// 4. Ghi x4 vao SRAM DMEM[0] (0x05000400) de verify
+// 5. Ghi co hoan tat = 0xCAFEBABE vao DMEM[1] (0x05000404)
+@000
+040000b7 // 0x000: lui  x1, 0x04000      # x1 = 0x04000000 (GPIO base)
+ffff0137 // 0x004: lui  x2, 0xFFFF0      # x2 = 0xFFFF0000 (direction mask)
+0020a023 // 0x008: sw   x2, 0(x1)        # GPIO_DIRECTION = 0xFFFF0000
+a5a501b7 // 0x00c: lui  x3, 0xA5A50      # x3 = 0xA5A50000
+0030a423 // 0x010: sw   x3, 8(x1)        # GPIO_OUTPUT = 0xA5A50000
+0040a203 // 0x014: lw   x4, 4(x1)        # x4 = GPIO_INPUT
+050002b7 // 0x018: lui  x5, 0x05000      # x5 = 0x05000000 (SRAM base)
+4042a023 // 0x01c: sw   x4, 0x400(x5)    # DMEM[0] (0x05000400) = x4
+cafeb337 // 0x020: lui  x6, 0xCAFEB      # x6 = 0xCAFEB000
+abe30313 // 0x024: addi x6, x6, -1346    # x6 = 0xCAFEBABE (0xCAFEB000 + 0xABE sign-ext)
+4062a223 // 0x028: sw   x6, 0x404(x5)    # DMEM[1] (0x05000404) = 0xCAFEBABE
+0000006f // 0x02c: jal  x0, 0            # Loop forever
